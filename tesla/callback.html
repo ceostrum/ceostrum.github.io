@@ -1,0 +1,17 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Tesla sign-in</title>
+<style>body{font:16px system-ui,sans-serif;margin:2rem 1rem;max-width:40rem;background:#fff;color:#111}code{word-break:break-all;background:#eee;padding:.2rem .4rem}</style>
+<h1>Tesla sign-in</h1>
+<p id="msg">Reading the response…</p>
+<p><code id="code"></code></p>
+<script>
+  const p = new URLSearchParams(location.search);
+  const code = p.get("code"), err = p.get("error");
+  document.getElementById("msg").textContent = code
+    ? "Copy this code into the family-frame CLI on ocm. It works once and expires in a few minutes."
+    : "No code returned" + (err ? ": " + err : ".");
+  document.getElementById("code").textContent = code || "";
+</script>
